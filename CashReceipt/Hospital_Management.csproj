@@ -14,7 +14,7 @@
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <TargetFrameworkProfile />
-    <PublishUrl>C:\Users\DCAtt\source\repos\CashReceipt_MySQL - 2026\Published\</PublishUrl>
+    <PublishUrl>ftp://148.72.90.17:21/</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -24,7 +24,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>https://github.com/dcattri/Hospital_Management/tree/master/Published/</InstallUrl>
+    <InstallUrl>http://www.jalhaka.com/windows_hms/</InstallUrl>
     <ProductName>Hospital Management</ProductName>
     <PublisherName>SoftTech Event</PublisherName>
     <ApplicationRevision>5</ApplicationRevision>
