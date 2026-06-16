@@ -34,7 +34,7 @@ namespace Hospital_Management
             try
             {
                 frmReportViewer rpt = new frmReportViewer();
-                rpt.rptName = "rptRefAmount.rdlc";
+                rpt.rptName = "report/rptRefAmount.rdlc";
                 rpt.dt = getReportDT();
                 rpt.Show();
             }

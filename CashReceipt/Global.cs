@@ -109,9 +109,15 @@ namespace Hospital_Management
         public static string con()
         {
             // determine desired DB by branch
+            // Prefer explicit DB names from environment variables; fall back to hard-coded defaults
+            var palwalDb = Environment.GetEnvironmentVariable("CASHRECEIPT_DB_PALWAL");
+            if (string.IsNullOrWhiteSpace(palwalDb)) palwalDb = "cashreceipt_test";
+            var hodalDb = Environment.GetEnvironmentVariable("CASHRECEIPT_DB_HODAL");
+            if (string.IsNullOrWhiteSpace(hodalDb)) hodalDb = "cashreceipt_hodal_test";
+
             var desiredDb = (Globals.branch ?? string.Empty).ToLowerInvariant() == "palwal"
-                ? "cashreceipt_test"
-                : "cashreceipt_hodal_test";
+                ? palwalDb
+                : hodalDb;
 
             // 1) environment override: full connection string
             try

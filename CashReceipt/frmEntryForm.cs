@@ -47,15 +47,15 @@ namespace Hospital_Management
             insertReceipt();
             con.Close();
             frmReportViewer rpt = new frmReportViewer();
-            if (Globals.branch=="palwal")
+            if (Globals.branch == "palwal")
             {
-                rpt.rptName = "rptInvoice_palwal.rdlc";
+                rpt.rptName = "report/rptInvoice_palwal.rdlc";
             }
             else
             {
-                rpt.rptName = "rptInvoice.rdlc";
+                rpt.rptName = "report/rptInvoice.rdlc";
             }
-            
+
             rpt.dt = getReportDT();
             rpt.Show();
         }
@@ -65,11 +65,11 @@ namespace Hospital_Management
             //rpt.rptName = "rptInvoice.rdlc";
             if (Globals.branch == "palwal")
             {
-                rpt.rptName = "rptInvoice_palwal.rdlc";
+                rpt.rptName = "report/rptInvoice_palwal.rdlc";
             }
             else
             {
-                rpt.rptName = "rptInvoice.rdlc";
+                rpt.rptName = "report/rptInvoice.rdlc";
             }
             rpt.dt = getReportDT();
             rpt.Show();
@@ -324,7 +324,7 @@ namespace Hospital_Management
                     }
                     if (txtBillNo.Text != "")
                     {
-                        if (Globals.username == "admin" || (Globals.username != "admin" && chkIPD.Checked==true))
+                        if (Globals.username == "admin" || (Globals.username != "admin" && chkIPD.Checked == true))
                         {
                             // Update main receipt
                             cmd = con.CreateCommand();
@@ -545,7 +545,8 @@ namespace Hospital_Management
             txtMobile.Text = dt.Tables[0].Rows[0]["Mobile"].ToString();
             txtAge.Text = dt.Tables[0].Rows[0]["Age"].ToString();
             txtAddress.Text = dt.Tables[0].Rows[0]["Address"].ToString();
-            if (dt.Tables[0].Rows[0]["DoctorID"].ToString() == "") { cboDoctorName.SelectedValue = 2; } else { cboDoctorName.SelectedValue = dt.Tables[0].Rows[0]["DoctorID"].ToString(); };
+            if (dt.Tables[0].Rows[0]["DoctorID"].ToString() == "") { cboDoctorName.SelectedValue = 2; } else { cboDoctorName.SelectedValue = dt.Tables[0].Rows[0]["DoctorID"].ToString(); }
+            ;
             txtRate.Text = dt.Tables[0].Rows[0]["Rate"].ToString();
             txtDiscount.Text = dt.Tables[0].Rows[0]["Discount"].ToString();
             txtRefAmount.Text = dt.Tables[0].Rows[0]["RefAmount"].ToString();
@@ -899,6 +900,13 @@ namespace Hospital_Management
                 MessageBox.Show("You need admin rights to mark Unpaid");
                 chkRefPaid.Checked = true;
             }
+            if (txtBillNo.Text != "")
+            {
+                if (chkRefPaid.Checked == false)
+                { AuditTrail.Log(Globals.username, nameof(frmEntryForm), "Open", "Ref unpaid marked for billno: " + txtBillNo.Text); }
+                else
+                { AuditTrail.Log(Globals.username, nameof(frmEntryForm), "Open", "Ref paid marked for billno: " + txtBillNo.Text); }
+            }
             //if (Globals.username != "admin" && chkRefPaid.Checked == true)
             //{
             //    MessageBox.Show("You need admin rights to mark paid");
@@ -955,7 +963,8 @@ namespace Hospital_Management
             txtMobile.Text = dt.Tables[0].Rows[0]["Mobile"].ToString();
             txtAge.Text = dt.Tables[0].Rows[0]["Age"].ToString();
             txtAddress.Text = dt.Tables[0].Rows[0]["Address"].ToString();
-            if (dt.Tables[0].Rows[0]["DoctorID"].ToString() == "") { cboDoctorName.SelectedValue = 2; } else { cboDoctorName.SelectedValue = dt.Tables[0].Rows[0]["DoctorID"].ToString(); };
+            if (dt.Tables[0].Rows[0]["DoctorID"].ToString() == "") { cboDoctorName.SelectedValue = 2; } else { cboDoctorName.SelectedValue = dt.Tables[0].Rows[0]["DoctorID"].ToString(); }
+            ;
             //dtpBillDate.Value = Convert.ToDateTime(dt.Tables[0].Rows[0]["CreatedDate"]);
             cbGender.SelectedItem = dt.Tables[0].Rows[0]["Gender"].ToString();
             if (dt.Tables[0].Rows[0]["RelationType"].ToString() == "W/o") { rbWife.Checked = true; }

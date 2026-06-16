@@ -30,7 +30,7 @@ namespace Hospital_Management
         private void btnPrint_Click(object sender, EventArgs e)
         {
             frmReportViewer rpt = new frmReportViewer();
-            rpt.rptName = "rptDailyCollection.rdlc";
+            rpt.rptName = "report/rptDailyCollection.rdlc";
             rpt.dt = getReportDT();
             rpt.Show();
         }

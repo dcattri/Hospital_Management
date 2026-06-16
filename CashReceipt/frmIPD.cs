@@ -640,7 +640,7 @@ namespace Hospital_Management
             insertReceipt();
             con.Close();
             frmReportViewer rpt = new frmReportViewer();
-            rpt.rptName = "rptIPD.rdlc";
+            rpt.rptName = "report/rptIPD.rdlc";
             rpt.dt = getReportDT();
             rpt.Show();
         }
@@ -648,7 +648,7 @@ namespace Hospital_Management
         private void btn_Print_Click(object sender, EventArgs e)
         {
             frmReportViewer rpt = new frmReportViewer();
-            rpt.rptName = "rptIPD.rdlc";
+            rpt.rptName = "report/rptIPD.rdlc";
             rpt.dt = getReportDT();
             rpt.Show();
         }
